@@ -38,29 +38,29 @@ export default function List() {
       }
    };
 
-   //getCurrent reviews
-   const indexOfLastReview = CurrentPage * ReviewsPerPage;
-   const indexOfFirstReview = indexOfLastReview - ReviewsPerPage;
-   const currentReviews = Reviews.slice(indexOfFirstReview, indexOfLastReview);
+   //Setting Pagination
+   // const indexOfLastReview = CurrentPage * ReviewsPerPage;
+   // const indexOfFirstReview = indexOfLastReview - ReviewsPerPage;
+   // const currentReviews = Reviews.slice(indexOfFirstReview, indexOfLastReview);
 
-   //change page
+   //Change page Number
    const paginate = (pageNumber) => {
       setCurrentPage(pageNumber);
    };
 
    //Sorting
    const handleSortOverall = () => {
-      currentReviews.sort((a, b) => {
+      Reviews.sort((a, b) => {
          return a.ratings.Overall - b.ratings.Overall;
       });
    };
    const handleSortConnectionLevel = () => {
-      currentReviews.sort((a, b) => {
+      Reviews.sort((a, b) => {
          return a.reviewer.connection_level - b.reviewer.connection_level;
       });
    };
    const handleSortUsefulness = () => {
-      currentReviews.sort((a, b) => {
+      Reviews.sort((a, b) => {
          return a.usefulness - b.usefulness;
       });
    };
@@ -151,7 +151,10 @@ export default function List() {
                </main>
             </div>
             <Card text="center">
-               {currentReviews.map((each) => (
+               {Reviews.slice(
+                  CurrentPage * ReviewsPerPage - ReviewsPerPage,
+                  CurrentPage * ReviewsPerPage
+               ).map((each) => (
                   <Review
                      key={each.name}
                      title={each.title}
