@@ -38,11 +38,6 @@ export default function List() {
       }
    };
 
-   //Setting Pagination
-   // const indexOfLastReview = CurrentPage * ReviewsPerPage;
-   // const indexOfFirstReview = indexOfLastReview - ReviewsPerPage;
-   // const currentReviews = Reviews.slice(indexOfFirstReview, indexOfLastReview);
-
    //Change page Number
    const paginate = (pageNumber) => {
       setCurrentPage(pageNumber);
@@ -51,17 +46,17 @@ export default function List() {
    //Sorting
    const handleSortOverall = () => {
       Reviews.sort((a, b) => {
-         return a.ratings.Overall - b.ratings.Overall;
+         return b.ratings.Overall - a.ratings.Overall;
       });
    };
    const handleSortConnectionLevel = () => {
       Reviews.sort((a, b) => {
-         return a.reviewer.connection_level - b.reviewer.connection_level;
+         return b.reviewer.connection_level - a.reviewer.connection_level;
       });
    };
    const handleSortUsefulness = () => {
       Reviews.sort((a, b) => {
-         return a.usefulness - b.usefulness;
+         return b.usefulness - a.usefulness;
       });
    };
 
@@ -102,6 +97,7 @@ export default function List() {
                            value={Product}
                            onChange={handleProduct}
                            placeholder="No. from 1 - 20"
+                           required
                         ></input>
                      </div>
                      <label htmlFor="viewer">VIEWER ID </label>
@@ -115,6 +111,7 @@ export default function List() {
                            value={Viewer}
                            onChange={handleViewer}
                            placeholder="No. from 1 - 10"
+                           required
                         ></input>
                      </div>
                      <br></br>
@@ -125,26 +122,26 @@ export default function List() {
                   <br></br>
                   <div className="pagination">
                      <select id="SortBy">
-                        <option value="Sort By" defaultValue>
+                        <option value="SortBy" defaultValue>
                            Sort By
                         </option>
                         <option
                            value="OverallRatings"
                            onClick={handleSortOverall}
                         >
-                           Overall Ratings
+                           Overall Ratings High - Low
                         </option>
                         <option
                            value="ReviewerConnectionLevel"
                            onClick={handleSortConnectionLevel}
                         >
-                           Reviewer Connection Level
+                           Reviewer Connection Level High - Low
                         </option>
                         <option
                            value="Usefulness"
                            onClick={handleSortUsefulness}
                         >
-                           Usefulness
+                           Usefullness High - Low
                         </option>
                      </select>
                   </div>
@@ -173,16 +170,14 @@ export default function List() {
                      connection_level={each.reviewer.connection_level}
                   />
                ))}
+               <Pagination
+                  ReviewsPerPage={ReviewsPerPage}
+                  totalReviews={Reviews.length}
+                  paginate={paginate}
+               />
             </Card>
-
             <footer className="footer">
-               <div>
-                  <Pagination
-                     ReviewsPerPage={ReviewsPerPage}
-                     totalReviews={Reviews.length}
-                     paginate={paginate}
-                  />
-               </div>
+               <div></div>
                Created By : Love Dhimaan
             </footer>
          </div>

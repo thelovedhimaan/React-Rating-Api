@@ -40,9 +40,6 @@ export default function Review(props) {
 
          {View === true ? (
             <div>
-               <Button onClick={handleClick} primary outline>
-                  Less Ratings
-               </Button>
                <div className="ratingName">delivery_time</div>
                <StarRatings
                   rating={props.delivery_time}
@@ -97,6 +94,11 @@ export default function Review(props) {
                   starDimension="24px"
                   starSpacing="12px"
                />
+               <br></br>
+               <br></br>
+               <Button onClick={handleClick} primary outline>
+                  Less Ratings
+               </Button>
             </div>
          ) : (
             <Button onClick={handleClick} primary outline>
