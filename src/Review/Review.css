@@ -1,0 +1,36 @@
+.Title {
+   font-weight: 700;
+   font-size: 2.3rem;
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+}
+.Usefullness {
+   font-size: 1.3rem;
+   padding: 15px;
+   font-style: oblique;
+}
+.Comments {
+   font-size: 2.3rem;
+   font-weight: 900;
+   font-style: italic;
+}
+.Name {
+   padding-top: 10px;
+   font-size: 1.2rem;
+   text-decoration: underline;
+}
+.ratingName {
+   margin: 4px;
+   padding: 20px;
+   text-transform: uppercase;
+   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande',
+      'Lucida Sans', Arial, sans-serif;
+   font-size: 1.2rem;
+   font-weight: 600;
+}
+.Card {
+   margin: 1% 10%;
+   border: midnightblue 4px double;
+   padding: 30px;
+   border-radius: 6px;
+}
